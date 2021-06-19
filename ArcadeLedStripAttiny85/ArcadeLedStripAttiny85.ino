@@ -24,6 +24,7 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   strip.begin(); // Initialize NeoPixel strip object (REQUIRED)
   strip.show();  // Initialize all pixels to 'off'
+  ledToWhite(128, 1);    // White full
 }
 
 void loop() {
@@ -37,7 +38,7 @@ void loop() {
     // Check if button is still low after debounce.
     newState = digitalRead(BUTTON_PIN);
     if(newState == LOW) {      // Yes, still low
-      if(++mode > 8) mode = 0; // Advance to next mode, wrap around after #8
+      if(++mode > 4) mode = 0; // Advance to next mode, wrap around after #8
       switch(mode) {           // Start the new animation...
         case 0:
           ledToWhite(255, 1);    // White full
